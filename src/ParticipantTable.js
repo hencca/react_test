@@ -12,7 +12,6 @@ constructor() {
 }
 
 componentDidMount() {
-  console.log(this.props.data)
   this.setState({
     data:this.props.data.slice()
   })
@@ -31,52 +30,36 @@ onRowEdit(obj) {
     data:data
   })
 
-}
-
-
-componentWillReceiveProps() {
-  this.setState({
-    data:this.props.data
-  })
+  this.props.onUpdate(data)
 }
 
 onRowDelete(obj) {
-
-
-    let data = this.state.data.filter(el => {
-    if( el.id !== obj.id ) {
-      return el;
-    }
-
-  })
-
-  this.setState({
-    data:data
-  })
-
+    let data = this.props.data.slice().filter(el => {
+      if( el.id !== obj.id ) {
+        return el;
+      }
+    })
+    this.props.onUpdate(data)
 }
 
 sortByHeader(name) {
   this.setState({
-    sortOrder:-this.state.sortOrder,
+    sortOrder: -this.state.sortOrder,
     sortBy:name
   })
-
 }
 
 sort(array) {
-
   return array.slice().sort((el1,el2)=>{
     let ret = -1
     let sortBy = this.state.sortBy;
-    if(el1[sortBy] > el2[sortBy] ) {
+    if( el1[sortBy] > el2[sortBy] ) {
       ret = -1
     } else {
       ret = 1
     }
     ret *= this.state.sortOrder
-    return ret
-
+    return ret;
   })
 }
 
@@ -85,42 +68,45 @@ getTableHeader() {
     this.headers = this.props.display
   } else {
     this.headers = []
-      for(let name in this.state.data[0] ) {
+      for(let name in this.props.data[0] ) {
         this.headers.push(name)
       }
   }
 
     const ret = (
-            <thead key={'thead'}>
-              <tr>
-                {this.headers.map((header, num) => <td onClick={e=>{this.sortByHeader(header)}} key={num}>{header}</td>)}
-              </tr>
-            </thead>)
+            <div className="row header" key={'thead'}>
+
+                {this.headers.map((header, num) => <div className="col" onClick={e=>{this.sortByHeader(header)}} key={num}>{header}</div>)}
+                <div className="col"></div>
+            </div>
+
+          )
     return ret;
 }
 
+
 getTableBody() {
-  let data = this.sort(this.state.data)
+  let data = this.sort(this.props.data)
   return  (
-    <tbody key={'body'}>
+    <div key={'body'}>
      {
        data.map((row, num)=> <Row key={row.id} row={row}
        onEdit={this.onRowEdit.bind(this)}
        onDelete={this.onRowDelete.bind(this)}
        headers={this.headers}></Row>)
      }
-   </tbody>
+   </div>
  )
 }
 
 render() {
-    console.log("render" + this.state.sortOrder)
+
       return (
-        <table className="participant_table">
+        <div className="participant_table">
         {
           [this.getTableHeader(),this.getTableBody()]
         }
-        </table>
+      </div>
       )
   }
 

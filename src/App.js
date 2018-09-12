@@ -7,7 +7,7 @@ import './App.css';
 let data = [
   {
     id:23,
-    name:"First",
+    name:"George Clooney",
     email:"hi@ko.com",
     phone_number:"32332",
   },
@@ -19,7 +19,7 @@ let data = [
   },
   {
     email:"hwwi@ko.com",
-    name:"Anu",
+    name:"Joel",
     id:4,
     phone_number:"333223332"
   },
@@ -41,12 +41,27 @@ constructor() {
   }
 }
 
-updateStuff(msg) {
-  alert(msg)
+updateTable(data) {
+    this.setState({
+      data
+    })
+}
+
+getNextId(data) {
+  let num =  0;
+  data.forEach(el=> {
+    if(el.id > num) {
+      num = el.id
+    }
+  })
+  return num + 1
 }
 
 addNewParticipant(obj) {
   let data = this.state.data
+
+  obj.id = this.getNextId(data)
+
   data.push(obj)
   this.setState({
     data:data
@@ -54,12 +69,18 @@ addNewParticipant(obj) {
 }
 
   render() {
-  
+
     return (
       <div className="App">
+        <header>Logo</header>
+        <div className="inner-wrapper">
+        <h1>List of participants</h1>
         <Form submitHandler={this.addNewParticipant.bind(this)}></Form>
-        <ParticipantTable data={this.state.data} display={["name", "email", "phone_number"]}></ParticipantTable>
+        <ParticipantTable onUpdate={this.updateTable.bind(this)} data={this.state.data}
+          labels={["Name", "E-mail address", "Phone number"]}
+          display={["name", "email", "phone_number"]}></ParticipantTable>
       </div>
+    </div>
     );
   }
 }

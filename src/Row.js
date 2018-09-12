@@ -40,28 +40,28 @@ save() {
   render() {
 
     let normal =  (
-                    <tr>
+                    <div className="row">
                     {
-                      this.props.headers.map((el, num)=><td key={num}>{this.props.row[el]}</td>)
+                      this.props.headers.map((el, num)=><div className="col" key={num}>{this.props.row[el]}</div>)
                     }
-                    <td key="2">
-                      <button onClick={this.edit.bind(this)}>Edit</button>
-                      <button onClick={this.delete.bind(this)}>Del</button>
-                    </td>
-                    </tr>
+                    <div className="col" key="2">
+                      <button className="btn" onClick={this.edit.bind(this)}>Edit</button>
+                      <button className="btn" onClick={this.delete.bind(this)}>Del</button>
+                    </div>
+                    </div>
       )
 
       let editingrender = (
-        <tr>
+        <div className="row">
         {
-          this.props.headers.map((el,num)=><td key={num}><input type="text" ref={el} defaultValue={this.props.row[el]}></input></td>)
+          this.props.headers.map((el,num)=><div className="col" key={num}>
+          <input type="text" ref={el} defaultValue={this.props.row[el]}></input></div>)
         }
-        <td>
-        <button onClick={this.cancel.bind(this)}>Cancel</button>
-        <button onClick={this.save.bind(this)}>Save</button>
-
-        </td>
-        </tr>
+        <div className="col">
+          <button className="btn" onClick={this.cancel.bind(this)}>Cancel</button>
+          <button className="btn btn-ok" onClick={this.save.bind(this)}>Save</button>
+          </div>
+        </div>
       )
 
       if(!this.state.editing) {
