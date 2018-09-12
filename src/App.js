@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {ParticipantTable} from './ParticipantTable'
 import {Form} from './Form'
-import logo from './logo.svg';
+import logo from './logo.gif';
 import './App.css';
 
 let data = [
@@ -72,7 +72,9 @@ addNewParticipant(obj) {
 
     return (
       <div className="App">
-        <header>Logo</header>
+        <header><div className="logo"><h2>
+          <img className="icon" src={logo}></img>Nord Software</h2></div></header>
+
         <div className="inner-wrapper">
         <h1>List of participants</h1>
         <Form submitHandler={this.addNewParticipant.bind(this)}></Form>

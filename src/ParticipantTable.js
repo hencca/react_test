@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Row} from "./Row"
+import "./ParticipantTable.css"
 export class ParticipantTable extends Component {
 
 constructor() {
@@ -7,7 +8,6 @@ constructor() {
   this.state = {
     sortOrder:1,
     sortBy:null,
-    data:[]
   }
 }
 
@@ -73,10 +73,17 @@ getTableHeader() {
       }
   }
 
+  let labels = this.headers;
+
+  if(this.props.labels) {
+    labels = this.props.labels
+  }
+
     const ret = (
             <div className="row header" key={'thead'}>
 
-                {this.headers.map((header, num) => <div className="col" onClick={e=>{this.sortByHeader(header)}} key={num}>{header}</div>)}
+                {this.headers.map((header, num) => <div className="col"
+                  onClick={e=>{this.sortByHeader(header)}} key={num}><p>{labels[num]}</p></div>)}
                 <div className="col"></div>
             </div>
 

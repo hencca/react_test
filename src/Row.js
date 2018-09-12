@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-
+import trash from "./trash.gif"
+import edit from "./edit.gif"
 export class Row extends Component{
 
 constructor() {
@@ -42,11 +43,14 @@ save() {
     let normal =  (
                     <div className="row">
                     {
-                      this.props.headers.map((el, num)=><div className="col" key={num}>{this.props.row[el]}</div>)
+                      this.props.headers.map((el, num)=><div className="col" key={num}><p>{this.props.row[el]}</p></div>)
                     }
                     <div className="col" key="2">
-                      <button className="btn" onClick={this.edit.bind(this)}>Edit</button>
-                      <button className="btn" onClick={this.delete.bind(this)}>Del</button>
+                      <button className="btn-icon btn-edit" onClick={this.edit.bind(this)}>
+                      <img width="30" height="30" src={edit}></img></button>
+                      <button className="btn-icon btn-trash" onClick={this.delete.bind(this)}>
+                      <img width="30" height="30" src={trash}></img>
+                      </button>
                     </div>
                     </div>
       )
@@ -58,7 +62,7 @@ save() {
           <input type="text" ref={el} defaultValue={this.props.row[el]}></input></div>)
         }
         <div className="col">
-          <button className="btn" onClick={this.cancel.bind(this)}>Cancel</button>
+          <button className="btn btn-2" onClick={this.cancel.bind(this)}>Cancel</button>
           <button className="btn btn-ok" onClick={this.save.bind(this)}>Save</button>
           </div>
         </div>

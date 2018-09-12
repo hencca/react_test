@@ -2,32 +2,47 @@
 header {
   background-color: #adb5bd;
   height: 80px;
+  margin-bottom: 72px;
+}
+
+.logo {
+  margin-left: 32px;
+  padding-top:14px;
+  color: white;
+}
+
+.logo .icon  {
+  margin-right: 4px;
+  width:24px;
+   height:24px;
+   position: relative;
+   top: 2px;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
 }
 
-
+h1 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: #757575;
+}
 
 button {
   border-radius: 0;
   border: 0;
   height: 40px;
 }
-input[type=text] {
+
+input[type=text] ,
+input[type=number] ,
+input[type=email] {
   height: 40px;
   background-color: #fafafa;
   border: 1px solid #eeeeee;
-
-}
-
-.form {
-  background-color: white;
-  margin-bottom: 16px;
-    padding: 16px;
-}
-.form  .col {
-  flex:1;
-  text-align: left;
+  padding-left: 24px;
+  font-size: 16px
 }

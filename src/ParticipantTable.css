@@ -1,0 +1,41 @@
+.participant_table {
+  width: 100%;
+}
+
+.participant_table .row {
+  height:72px;
+  margin-bottom: 1px;
+  background-color: white
+}
+
+.participant_table .col {
+  padding: 0 24px 0 24px;
+  flex:1;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.participant_table .col input {
+  width: 150px;
+}
+
+.participant_table .header {
+  height:48px;
+
+}
+.participant_table .header .col {
+  padding: 0 24px ;
+}
+
+.participant_table .header p {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-icon {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
