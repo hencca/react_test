@@ -1,5 +1,6 @@
 {
   "name": "react-test",
+  "homepage": "http://hrproductions.fi/react/build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,35 +1,10 @@
 import React, { Component } from 'react';
-import {ParticipantTable} from './ParticipantTable'
-import {Form} from './Form'
-import logo from './logo.gif';
+import {ParticipantTable} from './ParticipantTable';
+import {Form} from './Form';
+import logo from './img/logo.gif';
 import './App.css';
+import data from "./data/data";
 
-let data = [
-  {
-    id:23,
-    name:"George Clooney",
-    email:"hi@ko.com",
-    phone_number:"32332",
-  },
-  {
-    email:"hwwi@ko.com",
-    name:"Henkka",
-    id:2,
-    phone_number:"333223332"
-  },
-  {
-    email:"hwwi@ko.com",
-    name:"Joel",
-    id:4,
-    phone_number:"333223332"
-  },
-  {
-    email:"hwwi@ko.com",
-    name:"Jukka",
-    id:24,
-    phone_number:"333223332"
-  }
-];
 
 
 class App extends Component {
@@ -38,34 +13,34 @@ constructor() {
   super();
   this.state = {
     data:data
-  }
+  };
 }
 
 updateTable(data) {
     this.setState({
       data
-    })
+    });
 }
 
 getNextId(data) {
   let num =  0;
   data.forEach(el=> {
     if(el.id > num) {
-      num = el.id
+      num = el.id;
     }
   })
-  return num + 1
+  return num + 1;
 }
 
 addNewParticipant(obj) {
-  let data = this.state.data
+  let data = this.state.data;
 
   obj.id = this.getNextId(data)
 
   data.push(obj)
   this.setState({
     data:data
-  })
+  });
 }
 
   render() {

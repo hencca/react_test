@@ -1,13 +1,13 @@
-import React, {Component} from 'react'
-import trash from "./trash.gif"
-import edit from "./edit.gif"
+import React, {Component} from 'react';
+import trash from "./img/trash.gif";
+import edit from "./img/edit.gif";
 export class Row extends Component{
 
 constructor() {
   super();
   this.state = {
     editing:false,
-  }
+  };
 }
 
 edit() {
