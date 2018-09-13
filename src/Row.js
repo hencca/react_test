@@ -73,7 +73,5 @@ export class Row extends Component {
         } else {
           return editingrender
         }
-
     }
-
 }
