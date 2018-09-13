@@ -7,21 +7,10 @@ body {
   line-height: 16px;
 }
 
-* {
-  /*outline:1px dashed;*/
-}
-
-div {
-    /*outline:1px dotted gray;*/
-}
-
-
 .inner-wrapper {
   max-width: 912px;
   margin: auto;
-
 }
-
 
 .btn {
   font-size: 14px;

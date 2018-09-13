@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Row} from "./Row"
-import "./ParticipantTable.css"
+import {Row} from "./Row";
+import "./ParticipantTable.css";
 export class ParticipantTable extends Component {
 
 constructor() {
@@ -8,7 +8,7 @@ constructor() {
   this.state = {
     sortOrder:1,
     sortBy:null,
-  }
+  };
 }
 
 componentDidMount() {
@@ -19,18 +19,14 @@ componentDidMount() {
 
 onRowEdit(obj) {
 
-  let data = this.state.data.map(el => {
+  let data = this.props.data.map(el => {
     if( el.id === obj.id ) {
-      return obj
+      return obj;
     }
     return el;
-  })
+  });
 
-  this.setState({
-    data:data
-  })
-
-  this.props.onUpdate(data)
+  this.props.onUpdate(data);
 }
 
 onRowDelete(obj) {
@@ -39,14 +35,14 @@ onRowDelete(obj) {
         return el;
       }
     })
-    this.props.onUpdate(data)
+    this.props.onUpdate(data);
 }
 
 sortByHeader(name) {
   this.setState({
     sortOrder: -this.state.sortOrder,
     sortBy:name
-  })
+  });
 }
 
 sort(array) {
@@ -54,29 +50,29 @@ sort(array) {
     let ret = -1
     let sortBy = this.state.sortBy;
     if( el1[sortBy] > el2[sortBy] ) {
-      ret = -1
+      ret = -1;
     } else {
-      ret = 1
+      ret = 1;
     }
     ret *= this.state.sortOrder
     return ret;
-  })
+  });
 }
 
 getTableHeader() {
   if(this.props.display) {
-    this.headers = this.props.display
+    this.headers = this.props.display;
   } else {
     this.headers = []
       for(let name in this.props.data[0] ) {
-        this.headers.push(name)
+        this.headers.push(name);
       }
   }
 
   let labels = this.headers;
 
   if(this.props.labels) {
-    labels = this.props.labels
+    labels = this.props.labels;
   }
 
     const ret = (
@@ -107,7 +103,6 @@ getTableBody() {
 }
 
 render() {
-
       return (
         <div className="participant_table">
         {
@@ -116,5 +111,4 @@ render() {
       </div>
       )
   }
-
 }
